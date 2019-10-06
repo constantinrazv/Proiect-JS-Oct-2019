@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" integrity="sha256-ECB9bbROLGm8wOoEbHcHRxlHgzGqYpDtNTgDTyDz0wg=" crossorigin="anonymous" />
+
+  <style>
+  .success .error{
+    color: white;
+    padding: 5px;
+    margin: 5px 0 15px 0;
+  }
+
+  .success{
+    background: green;
+  }
+  .error{
+    background: red;
+  }
+  </style>
+  <script src="appAdmin.js"></script>
+  <title>eleMag Admin</title>
+</head>
+<body onload="ajax();">
+  <section  class="section showcase">
+  <div class="container">
+    <div class="row">
+      <div class="nine columns">
+        <h5><a href="index prima pag.html">eleMag Admin</a></h5>
+      </div>
+    </div>
+    <form id="electronic-form" onsubmit="add(event);">
+      <div>
+        <label for="img"></label>
+        <span type="text" id="product-img" class="u-full-width">
+      </div>
+      <div>
+        <label for="name">Product Name</label>
+        <input type="text" id="product-name" class="u-full-width">
+      </div>
+      <div>
+        <label for="details">Product Details</label>
+        <input type="text" id="product-details" class="u-full-width">
+      </div>
+      <div>
+       <label for="picture">Picture link</label>
+       <input type="text" id="picture-link" class="u-full-width">
+      </div>
+      <div>
+       <label for="price">Product Price</label>
+       <input type="text" id="product-price" class="u-full-width">
+      </div>
+      <div>
+        <label for="stoc">Product stoc</label>
+        <input type="text" id="product-stoc" class="u-full-width">
+      </div>
+      <div>
+        <input type="submit" value="Submit" class="u-full-width">
+      </div>
+    </form>
+  
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Product Name</th>
+          <th>Product stoc</th>
+          <th>Product price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="product-list">
+
+      </tbody>
+    </table>
+  </div>
+</section>
+  <div style="margin-top: 500px;"></div> 
+</body>
+</html>
