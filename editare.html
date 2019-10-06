@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" integrity="sha256-ECB9bbROLGm8wOoEbHcHRxlHgzGqYpDtNTgDTyDz0wg=" crossorigin="anonymous" />
+  <title>Editare</title>
+<script>
+
+  
+  var list = [];
+
+async function editeaza(){
+
+  var i = window.location.search.substring(4);
+  var response = await fetch(`https://my-emag.firebaseio.com/produse/.json`);
+  list = await response.json();
+
+  document.getElementById('product-name').value = list[i].nume;
+  document.getElementById('product-stoc').value = list[i].stoc;
+  document.getElementById('product-price').value = list[i].pret;
+  document.getElementById('product-details').value = list[i].detalii;
+  document.getElementById('picture-link').value = list[i].imagine;
+
+  
+}
+
+async function add(event){
+  var i = window.location.search.substring(4);
+  event.preventDefault();
+  var obj = {
+    imagine: document.getElementById('picture-link').value,
+    stoc: document.getElementById('product-stoc').value,
+    nume: document.getElementById('product-name').value,
+    pret: document.getElementById('product-price').value,
+    detalii: document.getElementById('product-details').value,
+  }
+  var response = await fetch(`https://my-emag.firebaseio.com/produse/${i}.json`,{
+    method: 'put',
+    body: JSON.stringify(obj)
+  });
+  location.href="indexAdmin.html";
+}
+</script>
+
+</head>
+<body onload="editeaza();">
+    <div id="title">
+        <h1>Edit(Admin)</h1>
+      </div>
+     
+        <form id="electronic-form" onsubmit="add(event);">
+            <div>
+              <label for="name">Product Name</label>
+              <input type="text" id="product-name" class="u-full-width">
+            </div>
+            <div>
+              <label for="details">Product Details</label>
+              <input type="text" id="product-details" class="u-full-width">
+            </div>
+            <div>
+             <label for="picture">Picture link</label>
+             <input type="text" id="picture-link" class="u-full-width">
+            </div>
+            <div>
+             <label for="price">Product Price</label>
+             <input type="text" id="product-price" class="u-full-width">
+            </div>
+            <div>
+              <label for="stoc">Product stoc</label>
+              <input type="text" id="product-stoc" class="u-full-width">
+            </div>
+            <div>
+              <input type="submit" value="Submit" class="u-full-width">
+            </div>
+          </form>
+  
+</body>
+</html>
